@@ -7,10 +7,8 @@ include $(TARGET_GLOBAL)
 ###############################################################################
 # SOURCE
 ###############################################################################
-INCLUDE_DIR += \
-$(QKPROGRAM_DIR)/lib/hal/arduino
+INCLUDE_DIR += 
 
-C_SRC_DIR += \
-$(QKPROGRAM_DIR)/lib/hal/arduino
+C_SRC_DIR += 
 
 
