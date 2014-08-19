@@ -1,6 +1,11 @@
 #ifndef QK_DSP_H
 #define QK_DSP_H
 
+/**
+@mainpage QkDSP
+
+*/
+
 #include "qk_avg.h"
 #include "qk_fir.h"
 #include "qk_iir.h"
