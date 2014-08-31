@@ -4,6 +4,8 @@
 /**
 @mainpage QkDSP
 
+Many sensor based applications require the use of DSP algorithms and in particular digital filters. They may be used for noise reduction but also to extract meaningful information from digital signals. Some implementations may be complex and require considerable computational power and memory. Hence, small and low power embedded systems presents some challenges due to their lack of processing power and scarce memory. As such, a library that makes digital filters easy to use and implement at the embedded level was implemented.
+
 */
 
 #include "qk_avg.h"

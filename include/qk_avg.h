@@ -18,6 +18,9 @@ typedef enum
   QK_AVG_MA_MODE_RECURSIVE
 } qk_avg_ma_mode;
 
+/**
+ * Moving average filter
+ */
 typedef struct
 {
   int16_t *w; // Window (N)
