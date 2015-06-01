@@ -2,20 +2,23 @@
  * QkThings LICENSE
  * The open source framework and modular platform for smart devices.
  * Copyright (C) 2014 <http://qkthings.com>
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+#include "qk_dsp.h"
+#include <string.h>
 
 void qk_avg_ma_setup(qk_avg_ma *f, int16_t *w, int16_t N)
 {
@@ -26,18 +29,18 @@ void qk_avg_ma_setup(qk_avg_ma *f, int16_t *w, int16_t N)
   f->_mode = QK_AVG_MA_MODE_NONRECURSIVE;
   memset(w, 0, N*sizeof(int16_t));
 }
-void qk_avg_ma_init(ma_t *f, int16_t initial)
+void qk_avg_ma_init(qk_avg_ma *f, int16_t initial)
 {
   uint16_t i;
   f->_yn = initial;
   for(i=0; i<f->N; i++)
     f->w[i] = initial;
 }
-void qk_avg_ma_set_mode(qk_avg_ma* f, ma_mode_t mode)
+void qk_avg_ma_set_mode(qk_avg_ma* f, qk_avg_ma_mode mode)
 {
   f->_mode = mode;
 }
-int16_t ma_filter(qk_avg_ma *f, int16_t new_sample)
+int16_t qk_avg_ma_filter(qk_avg_ma *f, int16_t new_sample)
 {
   if(f->_mode == QK_AVG_MA_MODE_RECURSIVE)
   {
@@ -50,12 +53,15 @@ int16_t ma_filter(qk_avg_ma *f, int16_t new_sample)
     uint32_t buf;
     f->w[f->_head] = new_sample;
     for(buf=0,cnt=0,i=f->_head; cnt < f->N; i = (i+1) % f->N, cnt++)
+    {
       buf += f->w[i];
+    }
     buf /= f->N;
     f->_yn = buf;
   }
-
   f->_head = (f->_head+1) % f->N;
+
+  return f->_yn;
 }
 
 void qk_avg_ema_setup(qk_avg_ema *f, int16_t alpha)
