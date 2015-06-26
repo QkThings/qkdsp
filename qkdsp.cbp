@@ -23,8 +23,17 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="examples/example_qkdsp_ema.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="examples/example_qkdsp_fir.c">
+			<Option compilerVar="CC" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="examples/example_qkdsp_ma.c">
 			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
 		</Unit>
 		<Unit filename="include/qk_avg.h" />
 		<Unit filename="include/qk_dsp.h" />

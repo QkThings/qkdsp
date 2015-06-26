@@ -17,7 +17,7 @@ int main()
 
     // NOTE to RECURSIVE mode:
     // Input values divided by window size should always result in an integer value.
-    // Otherwise truncature errors occur. You may test it with the following samples:
+    // Otherwise (severe) truncature errors occur. You may test it with the following samples:
     //int16_t in[SAMPLES] = {9,5,9,9,8,6,8,7,3,6,9,0,3,7,5,3,8,7,6,2};
 
     puts("Input samples:");
